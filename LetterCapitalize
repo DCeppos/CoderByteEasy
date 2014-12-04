@@ -1,0 +1,20 @@
+function LetterCapitalize(str) { 
+ var sentence = "";
+   for (var i = 0; i < str.length; i++){
+       if (i === 0){          
+          sentence += str[0].toUpperCase();
+       }
+              
+       else if (str[i-1]=== " "){
+          sentence += str[i].toUpperCase();
+           
+       }
+       else{
+          sentence += str[i]; 
+           
+       }
+   }
+ return sentence;
+    
+
+}

@@ -1,0 +1,32 @@
+function LetterChanges(str) { 
+  str = str.toLowerCase();
+  var alphabet = "abcdefghijklmnopqrstuvwxyz";
+  var vowels ="aeiou";
+  var nextLetterPhrase = ""; 
+  
+  for (var i = 0; i < str.length; i++){ 
+     var alphaIndex = alphabet.indexOf(str[i]);
+     
+    if(alphaIndex  === -1 ) {
+         nextLetterPhrase += str[i];    
+    } 
+    else { 
+     var letter = alphabet.charAt(alphaIndex+1);
+
+     if(vowels.indexOf(letter) !== -1){
+         nextLetterPhrase += letter.toUpperCase();
+         
+     }
+     else {
+          nextLetterPhrase += letter;
+         
+     }
+
+    }
+    
+  }
+  
+  str = nextLetterPhrase;
+  return str; 
+         
+}

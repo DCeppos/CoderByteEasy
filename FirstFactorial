@@ -1,0 +1,21 @@
+function FirstFactorial(num) { 
+  
+  
+  if (num === 0 || num === 1){
+    return num;
+    
+      }
+  else{
+     var k = 1;
+    for (var i = 1; i <= num; i ++) {
+      k *= i;
+    }
+    num = k;
+  
+  }
+  
+  // code goes here  
+  return num; 
+         
+}
+FirstFactorial(5);

@@ -1,0 +1,17 @@
+function TimeConvert(num) { 
+var hours = 0;
+var mins = 0;
+var minsInHour = 60;
+
+if(num/minsInHour < 1 ){
+        mins = num;
+    }
+    
+
+else{
+    hours = Math.floor(num/minsInHour);
+
+    mins = num%minsInHour;
+
+    
+}

@@ -1,0 +1,24 @@
+function SimpleSymbols(str) { 
+str = str.toLowerCase();
+var beforeAfter = "+";
+var alphabet ="abcdefghijklmnopqrstuvwxyz";
+var outcome ="";
+
+
+for (var i = 0; i < str.length; i++){
+    if ( alphabet.indexOf(str[i]) >= 0){
+        if (str[i-1] === beforeAfter && str[i+1] === beforeAfter){
+            outcome = "true";
+        }
+        else {
+            return "false";
+        }
+    }
+}
+  return outcome; 
+         
+}
+
+
+SimpleSymbols("+d+=3=+s+");
+SimpleSymbols("f++d+");

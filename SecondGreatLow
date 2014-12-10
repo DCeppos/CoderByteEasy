@@ -1,0 +1,61 @@
+function SecondGreatLow(arr) { 
+
+//sorts array in ascending order
+var sorted = arr.sort(function(a,b){return a-b});
+var newArray =[];
+var end = sorted.length;
+
+var lowest = sorted[0];
+var highest = sorted[end-1];
+
+//handles when there are two items in array
+if(end===2){
+    return sorted[1] + " " + sorted[0];
+    
+}
+
+//handles when array is too small
+else if(end < 2){
+    return "Array not valid";
+    
+}
+
+//handles when three items in array makes second lowest and second highest are same number
+else if(end===3){
+    return sorted[1];
+}
+
+//handles when array includes numbers that are all the same
+else if(highest === lowest){
+    return "Array not valid";
+}
+
+else{
+    for (var i=0; i<end; i++){
+        
+        if(sorted[i] === lowest){
+        
+        continue;
+        }
+        else if (sorted[i] === highest ){
+        continue;    
+        }
+        else{
+            newArray.push(sorted[i]);
+        }
+        
+    }
+
+    return newArray[0] + " " + newArray[newArray.length-1];
+    
+}
+
+
+}
+
+
+//test cases pass
+SecondGreatLow([12,16,42,100, 125, 5, 5, 125]);
+SecondGreatLow([1, 42, 42, 180]);
+SecondGreatLow([1, 4, 4]);
+SecondGreatLow([6]);

@@ -1,0 +1,27 @@
+function DivisionStringified(num1,num2){
+    var result = Math.round(num1/num2);
+    var stringRes = result.toString();
+    var numDig = stringRes.length;
+    var output = "";
+     
+    if(numDig <=3){
+        return stringRes;
+    }
+    
+    else{
+            for(var i = 0; i<numDig; i++){
+                if((numDig-i)%3 ===0 && i !==numDig-1 && i !==0){
+                    output += "," + stringRes[i] ;
+                }
+                else{
+                    output += stringRes[i];
+                }
+                
+            } 
+                
+            }
+       
+    return output;
+    }
+    
+DivisionStringified(10000,7);

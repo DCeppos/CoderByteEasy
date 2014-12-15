@@ -1,0 +1,126 @@
+//Note I struggled with this one, trying to use regular expressions--which would make the code much more efficient
+//Could not get regular expressions to work, so took the very long way--with lots of IFs
+
+function CountingMinutesI(str) { 
+
+
+//setup an array including each time
+var timeArray = str.split("-");
+
+var differenceInMinutes =0;
+
+//vars to determine number of hours
+var hours1 = 0;
+var hours2 = 0;
+
+//vars to determine number of mins
+var mins1 = 0;
+var mins2 = 0;
+
+//vars to determine time of day
+var timeOfDay1 ="";
+var timeOfDay2 ="";
+
+//total minutes for each time in range
+var totalMins1 = 0;
+var totalMins2 = 0;
+
+
+//put values from first number into hours1 and minutes1 and determine time of day
+if(timeArray[0]){
+    for(var i =0; i<timeArray[0].length; i++){
+        if(i<2 && timeArray[0][i] !== ":"){
+            hours1 += timeArray[0][i];
+        }
+        else if (i>=2 && timeArray[0][i] !== ":" && timeArray[0][i] !== "a" && timeArray[0][i] !== "p" && timeArray[0][i] !== "m"){
+            mins1 += timeArray[0][i];
+            
+        }
+        else if (timeArray[0][timeArray[0].length-2] === "p" ){
+            timeOfDay1 ="afternoon";    
+            
+        }
+        else if (timeArray[0][timeArray[0].length-2] === "a" ){
+            timeOfDay1 ="morning";    
+            
+        }
+         
+    }
+    
+}
+
+//convert hours and minutes vars to numbers
+hours1 = Number(hours1);
+mins1 = Number(mins1);
+
+
+//put values from second number into hours2 and minutes2 and determine time of day
+if(timeArray[1]){
+    for(var j =0; j<timeArray[1].length; j++){
+        if(j<2 && timeArray[1][j] !== ":"){
+            hours2 += timeArray[1][j];
+        }
+        else if (j>=2 && timeArray[1][j] !== ":" && timeArray[1][j] !== "a" && timeArray[1][j] !== "p" && timeArray[1][j] !== "m"){
+            mins2 += timeArray[1][j];
+            
+        }
+        else if (timeArray[1][timeArray[1].length-2] === "p" ){
+            timeOfDay2 ="afternoon";    
+            
+        }
+        else if (timeArray[1][timeArray[1].length-2] === "a" ){
+            timeOfDay2 ="morning";    
+            
+        }
+         
+    }
+    
+}
+
+//convert hours and minutes vars to numbers
+hours2 = Number(hours2);
+mins2 = Number(mins2);
+
+//put hours into 24 hour range
+if(timeOfDay1 === "afternoon" && hours1 !== 12){
+    hours1 += 12;    
+}
+else if(timeOfDay1 === "morning" && hours1 === 12){
+    hours1 = 0;    
+}
+
+//find total minutes in day of first number
+totalMins1 = (hours1*60) + mins1;
+
+
+//put hours into 24 hour range
+if(timeOfDay2 === "afternoon" && hours2 !== 12){
+    hours2 += 12;    
+}
+else if(timeOfDay2 === "morning" && hours2 === 12){
+    hours2 = 0;    
+}
+
+//find total minutes in day of first number
+totalMins2 = (hours2*60) + mins2;
+
+//find difference in minutes between the two times
+if(totalMins1 > totalMins2){
+    differenceInMinutes = 1440 - (totalMins1-totalMins2);
+    
+}
+else if (totalMins2 > totalMins1){
+    differenceInMinutes = totalMins2-totalMins1;
+}
+
+else{
+    differenceInMinutes = 0; 
+}
+
+
+
+return differenceInMinutes;
+
+}
+
+CountingMinutesI("2:00pm-3:00pm");

@@ -1,0 +1,80 @@
+function MeanMode(arr){
+    
+    arr = arr.sort(function(a,b){return a-b});
+    var ArrSize = arr.length;
+    var total = 0;
+    var count =0;
+
+//create empty array to store a count of the number of times each item appears in arr
+    var modeArray = [];
+
+//create var to store the position in which the Largest number occurs in modeArray
+    var modeLargest = 0;
+
+    if (ArrSize ===0){
+        return null;
+        
+    }
+    else if(ArrSize ===1){
+        return 1;
+    }
+    
+    else{
+    
+    for (var i = 0; i<ArrSize; i++){
+        
+        //find total of all items in arr
+        total += arr[i];  
+        
+            //count number of times each number in arr repeats, this works because arr is sorted
+            for (var j=0; j<ArrSize; j++){
+                if(arr[i]===arr[j]){
+                    count+=1;
+                }
+                else{
+                    count+=0;
+                }
+                
+            }
+            //create modeArray to track number of times each number in arr repeats
+            modeArray.push(count);    
+            count = 0;
+        }
+
+
+//find the position of the highest number in modeArray, ArrSize works as limit because both arrays are same length
+    for (var k=0; k<ArrSize; k++){
+        if (modeArray[k]>= modeArray[k+1]){
+            modeLargest = k; 
+        }
+
+    }
+
+//find the value of the mode in arr; since modeArray and arr have same size, the index will be same
+    var mode = arr[modeLargest];
+
+//find the mean
+    var mean = Math.round(total/ArrSize);
+
+//output the sum, mean, and mode so you can check
+    console.log(arr);
+    console.log("Sum is " + total);
+    console.log("Mean is " + mean);
+    console.log("Mode is " + mode);
+    
+    //if all numbers in arr appear only 1 time, return zero 
+    if(modeArray[modeLargest]===1){
+        return 0;
+    }
+    //compare mean to mode
+    else if(mean === mode){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+
+    }
+}
+MeanMode([1,3,5]);
+MeanMode([4,3,5,6,4,2]);

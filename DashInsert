@@ -1,0 +1,19 @@
+function DashInsert(str){
+    
+    var outcomeStr ="";
+     
+    for (var i =0; i < str.length; i++){
+        if (Number(str[i])%2 !== 0 &&  Number(str[i+1])%2 !== 0 && i !== str.length-1){
+            outcomeStr += str[i] + "-";                   
+        }
+        else {
+            outcomeStr += str[i];
+            
+        }
+            
+    }
+    
+    return outcomeStr;
+    }
+    
+DashInsert("56730");

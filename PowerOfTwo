@@ -1,0 +1,25 @@
+function PowersOfTwo(num){
+
+if(num < 1 ){
+    return false;
+}
+
+var exponent = 0;
+
+for (var i= 0; i< num; i++){
+    if (Math.pow(2, i) === num){
+        exponent = i;
+        return true;
+    } 
+}
+
+if (exponent === 0){
+    return false;
+}
+
+
+}
+    
+PowersOfTwo(8);
+PowersOfTwo(1024);
+PowersOfTwo(1200);

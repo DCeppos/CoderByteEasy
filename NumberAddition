@@ -1,0 +1,33 @@
+function NumberAddition(str){
+    var numStr = "";
+    var numSum = 0;
+    
+    
+    //loop through string to look for numbers
+     for (var i =0; i<str.length; i++){
+    
+    //check to see if the last character in a string is a number     
+        if(str[i].match(/\d/) && typeof str[i+1] === 'undefined'){
+            numStr += str[i];
+            numSum += Number(numStr);
+            numStr ="";
+        }
+    
+    //check to see if a character is a number and the next character is also a number
+        else if (str[i].match(/\d/) && str[i+1].match(/\d/)){
+            numStr += str[i];         
+        }
+    
+    //check to see if a character is a number and if the next character is not a number
+        else if(str[i].match(/\d/) && str[i+1].match(/\D/)){
+
+            numStr += str[i];
+            numSum += Number(numStr);
+            numStr ="";
+        }
+        
+       }
+    
+    return numSum;
+    
+    }

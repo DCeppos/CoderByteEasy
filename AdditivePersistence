@@ -1,0 +1,32 @@
+function AdditivePersistence(num){
+    
+    if(num <10){
+        return 0;
+    }
+    
+    else{
+        function Persistence(num,count){
+    
+          var StringNum = num.toString();
+          var sum = 0;
+    
+          for (var i = 0; i<StringNum.length; i++){
+               var digit = Number(StringNum[i]);
+              sum += digit;
+            }
+    
+          if (sum<10){
+            return count;
+            }
+          else {
+            return Persistence(sum, count+1);
+            }
+    }
+    
+    return Persistence(num, 1);
+    }
+}
+
+//AdditivePersistence(9);
+//AdditivePersistence(2718);
+//AdditivePersistence(682);

@@ -1,0 +1,32 @@
+function MultiplicativePersistence(num) { 
+
+if(num<10){
+    return 0;
+}
+else{
+   function Persistence(num, count){
+   
+    var StringNum = num.toString();
+    var sum = StringNum[0];
+    
+    for(var i =1; i<StringNum.length; i++){
+        var digit = Number(StringNum[i]);
+        sum *= digit;
+    }
+    
+    if(sum<10){
+        return count;
+    }
+    else{
+        return Persistence(sum, count+1);
+    }
+  
+}
+return Persistence(num, 1);
+         
+}
+}
+
+//MultiplicativePersistence(8);
+//MultiplicativePersistence(84);
+//MultiplicativePersistence(784);
